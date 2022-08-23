@@ -12,12 +12,10 @@ public class DataExporter {
         dba.openConnection("1234abcd");
         ArrayList<String> dbaResult = dba.retrieveData("select * from weekdays");
 
-
         // 2. Read months from source B
         DatabaseB dbb = new DatabaseB();
         dbb.openConnection("6789pqrs");
         ArrayList<String> dbbResult = dbb.retrieveData("select * from months");
-
 
         // 3. Combine into one list
         ArrayList<String> dbCombined = new ArrayList<>();

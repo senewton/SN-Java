@@ -2,7 +2,6 @@ package nl.ntpr.sne;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class DatabaseB implements DataConnectionInterface {
 
