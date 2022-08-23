@@ -16,15 +16,11 @@ public class Rectangle extends Shape{
         this.width = width;
     }
 
-    // Method 1
-    // To draw rectangle
     @Override public void draw()
     {
         System.out.println("Rectangle has been drawn ");
     }
 
-    // Method 2
-    // To compute rectangle area
     @Override public double area()
     {
         // Length * Breadth

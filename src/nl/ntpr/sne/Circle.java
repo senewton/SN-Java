@@ -14,18 +14,13 @@ public class Circle extends Shape{
         this.radius = radius;
     }
 
-    // Method 1
-    // To draw circle
     @Override public void draw()
     {
         // Print statement
         System.out.println("Circle has been drawn ");
     }
 
-    // Method 2
-    // To compute circle area
-    @Override public double area()
-    {
+    @Override public double area() {
         return (double)((pi * radius * radius));
     }
 }

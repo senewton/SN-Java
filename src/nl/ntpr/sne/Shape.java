@@ -7,9 +7,6 @@ public abstract class Shape {
     // Constructor of this class
     Shape(String name) { this.objectName = name; }
 
-    // Method
-    // Non-abstract methods
-    // Having as default implementation
     public void moveTo(int x, int y)
     {
         System.out.println(this.objectName + " "
@@ -17,9 +14,7 @@ public abstract class Shape {
                 + " x = " + x + " and y = " + y);
     }
 
-    // Method 2
-    // Abstract methods which will be
-    // implemented by its subclass(es)
     abstract public double area();
+
     abstract public void draw();
 }
