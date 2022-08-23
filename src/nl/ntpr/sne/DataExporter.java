@@ -11,13 +11,13 @@ public class DataExporter {
         DatabaseA dba = new DatabaseA();
         dba.openConnection("1234abcd");
         ArrayList<String> dbaResult = dba.retrieveData("select * from weekdays");
-        dba.closeConnection();
+
 
         // 2. Read months from source B
         DatabaseB dbb = new DatabaseB();
         dbb.openConnection("6789pqrs");
         ArrayList<String> dbbResult = dbb.retrieveData("select * from months");
-        dbb.closeConnection();
+
 
         // 3. Combine into one list
         ArrayList<String> dbCombined = new ArrayList<>();
@@ -30,13 +30,28 @@ public class DataExporter {
         CsvExporter csv = new CsvExporter("myexportfile", "csv");
         csv.openFile();
         csv.exportData(dbCombined);
-        csv.closeFile();
 
         // 5. Export data as XML
         System.out.println("\n##Exporting XML File");
         XmlExporter xml = new XmlExporter("myexportfile", "xml");
         xml.openFile();
         xml.exportData(dbCombined);
-        xml.closeFile();
+
+        // 6. Close Connections
+        closeConnection(dba);
+        closeConnection(dbb);
+        closeExporters(csv);
+        closeExporters(xml);
+
+    }
+
+    private static void closeConnection(DataConnectionInterface dci){
+        System.out.println("\n##Carrying out Cleanup: Closing database connections");
+        dci.closeConnection();
+    }
+
+    private static void closeExporters(Exporter exp){
+        System.out.println("\n##Carrying out Cleanup: Closing exporters");
+        exp.closeFile();
     }
 }
