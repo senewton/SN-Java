@@ -3,9 +3,10 @@ package nl.ntpr.sne;
 import java.util.ArrayList;
 
 public abstract class Exporter {
+
     private String filePath = "c:/home/code/SN-Java/";
-    private String fileName = null;
-    private String fileType = null;
+    private String fileName ;
+    private String fileType ;
 
     Exporter(String fileName, String fileType){
         this.fileName = fileName;
@@ -17,5 +18,10 @@ public abstract class Exporter {
         return true;
     }
 
-    abstract public boolean exportData(ArrayList<String> data);
+    public boolean closeFile(){
+        System.out.println("Exporter: Closed output file: " + filePath + fileName + "." + fileType );
+        return true;
+    }
+
+    abstract public int exportData(ArrayList<String> data);
 }

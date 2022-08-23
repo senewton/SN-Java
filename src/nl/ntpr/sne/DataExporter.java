@@ -3,6 +3,7 @@ package nl.ntpr.sne;
 import java.util.ArrayList;
 
 public class DataExporter {
+
     public static void main(String[] args) {
         System.out.println("\n## Data Exporter Class");
 
@@ -25,7 +26,17 @@ public class DataExporter {
         System.out.println("\n##Created Combined List: Size: " + dbCombined.size() );
 
         // 4. Export data as CSV
+        System.out.println("\n##Exporting CSV File");
+        CsvExporter csv = new CsvExporter("myexportfile", "csv");
+        csv.openFile();
+        csv.exportData(dbCombined);
+        csv.closeFile();
 
         // 5. Export data as XML
+        System.out.println("\n##Exporting XML File");
+        XmlExporter xml = new XmlExporter("myexportfile", "xml");
+        xml.openFile();
+        xml.exportData(dbCombined);
+        xml.closeFile();
     }
 }

@@ -1,12 +1,11 @@
 package nl.ntpr.sne;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class DatabaseA implements DataConnectionInterface {
     private boolean isOpen = false;
-    private String masterPassword = "1234abcd";
+    private final String masterPassword = "1234abcd";
 
     ArrayList<String> dbTable ;
 
@@ -15,14 +14,14 @@ public class DatabaseA implements DataConnectionInterface {
         if(password.equals(masterPassword)){
             System.out.println("Data Source A Open.");
             isOpen = true;
-            return isOpen;
+            return true;
         }
         return isOpen;
     }
 
     @Override
     public ArrayList<String> retrieveData(String query) {
-        if(isOpen==true ) {
+        if(isOpen) {
             if(query.equals("select * from weekdays")) {
                 System.out.println("Database A: Executing query: " + query );
                 dbTable = new ArrayList<>(List.of("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"));
@@ -39,13 +38,12 @@ public class DatabaseA implements DataConnectionInterface {
 
     @Override
     public boolean closeConnection() {
-        if(isOpen==true){
+        if(isOpen){
             isOpen = false;
             System.out.println("Database A: Closed connection");
-            return isOpen;
         } else {
             System.out.println("Error: Database A already closed");
-            return isOpen;
         }
+        return isOpen;
     }
 }

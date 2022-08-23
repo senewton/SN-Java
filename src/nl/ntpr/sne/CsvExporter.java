@@ -9,7 +9,13 @@ public class CsvExporter extends Exporter{
     }
 
     @Override
-    public boolean exportData(ArrayList<String> data) {
-        return false;
+    public int exportData(ArrayList<String> data) {
+        int counter = 1;
+        System.out.println("ID;Description");
+        for(String s: data){
+            System.out.println(counter + ";" + s);
+            counter += 1;
+        }
+        return counter;
     }
 }
